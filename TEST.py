@@ -42,12 +42,12 @@ import openpyxl
 def просмотреть_файл():
     """Просматривает содержимое файла Excel и позволяет выбрать лист, а также возвращаться к выбору листа."""
     
-    файл = input("Введите имя файла Excel: ")
+    файл = input("Введите Напитки или Закуски: ")
     try:
         wb = openpyxl.load_workbook(файл + ".xlsx")  # Добавляем расширение .xlsx
 
         while True:
-            print("\nДоступные листы:")
+            print("\nДоступный выбор:")
             for index, sheet in enumerate(wb.sheetnames):
                 print(f"{index + 1}. {sheet}")
             print("0. Назад")
@@ -58,7 +58,7 @@ def просмотреть_файл():
                 break  # Возвращаемся в главное меню
             elif 0 <= лист_выбор < len(wb.sheetnames):
                 sheet = wb.worksheets[лист_выбор]  # Выбираем лист по индексу
-                print("\nЛист:", sheet.title)
+                print("\nМеню:", sheet.title)
                 for row in sheet.iter_rows(values_only=True):
                     print(row)
             else:
@@ -71,7 +71,7 @@ def главное_меню():
     """Отображает главное меню."""
     
     print("\nГлавное меню:")
-    print("1. Просмотреть файл Excel")
+    print("1. Посмотреть меню")
     print("2. Выход")
     
     выбор = input("Выберите пункт меню: ")
